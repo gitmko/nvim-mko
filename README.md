@@ -3,6 +3,7 @@
 My NeoVim Configuration
 
 ![image](images/neovim.png)
+![image](images/neovim-edit.png)
 
 ## Installation
 
