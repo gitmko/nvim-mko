@@ -23,3 +23,7 @@ vim.keymap.set('n', '<Down>', '<Nop>', {})
 -- FUGITIVE
 
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
+
+-- LINE WRAP
+
+vim.keymap.set("n", "<leader>lw", ":set wrap!<CR>");
