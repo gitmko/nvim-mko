@@ -78,4 +78,9 @@ require("lazy").setup({
             vim.fn["mkdp#util#install"]()
         end,
     },
+
+    -- Toggle Term
+    {
+        'akinsho/toggleterm.nvim', version = "*", config = true
+    },
 })
