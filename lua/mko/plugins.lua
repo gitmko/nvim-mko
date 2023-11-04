@@ -1,5 +1,4 @@
 require("lazy").setup({
-
     -- LSP Zero
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -35,7 +34,13 @@ require("lazy").setup({
     {
         "catppuccin/nvim", name = "catppuccin", priority = 1000
     },
-
+    {
+        "neanias/everforest-nvim", name="everforest", version=false, lazy=false, priority=1001,
+    },
+    {
+        "navarasu/onedark.nvim", name="onedark", version=false, lazy=false, priority=1002,
+    },
+    
     -- Lualine
     {
         'nvim-lualine/lualine.nvim',
@@ -81,6 +86,83 @@ require("lazy").setup({
 
     -- Toggle Term
     {
-        'akinsho/toggleterm.nvim', version = "*", config = true
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        config = true
+    },
+
+    -- Indent Blankline
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        opts = {
+            indent = {
+                char = "│",
+                tab_char = "│",
+            },
+            scope = { enabled = false },
+            exclude = {
+                filetypes = {
+                    "help",
+                    "alpha",
+                    "dashboard",
+                    "neo-tree",
+                    "Trouble",
+                    "trouble",
+                    "lazy",
+                    "mason",
+                    "notify",
+                    "toggleterm",
+                    "lazyterm",
+                },
+            },
+        },
+        main = "ibl",
+    },
+
+    -- mini.indentscope
+    {
+        "echasnovski/mini.indentscope",
+        version = false, -- wait till new 0.7.0 release to put it back on semver
+        opts = {
+            -- symbol = "▏",
+            symbol = "│",
+            options = { try_as_border = true },
+        },
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
+                    "help",
+                    "alpha",
+                    "dashboard",
+                    "neo-tree",
+                    "Trouble",
+                    "trouble",
+                    "lazy",
+                    "mason",
+                    "notify",
+                    "toggleterm",
+                    "lazyterm",
+                },
+                callback = function()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
+        end,
+    },
+
+    -- Tmux Integration
+    {
+        "christoomey/vim-tmux-navigator", lazy=false
+    },
+
+    -- Neotree
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        }
     },
 })
